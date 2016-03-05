@@ -1,0 +1,12 @@
+#!/bin/bash
+if [[ -z "$1" || -z "$2" || -z "$3" ]]
+then
+        echo "syntax: xdebug_php <xdebug_client_ip> <php_ide_config_server_name> <command>"
+        echo "<xdebug_client_ip> : ip address of the computer where PhpStorm listens for xdebug session"
+        echo "<php_ide_config_server_name> : server name configured in PhpStorm"
+else
+        export PHP_IDE_CONFIG="serverName=$2"
+        export XDEBUG_CONFIG="remote_host=$1 remote_autostart=1"
+        set -- "" "" "${@:3}"
+        exec $@
+fi
