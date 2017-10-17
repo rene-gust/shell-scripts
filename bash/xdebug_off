@@ -1,7 +1,8 @@
 #!/bin/bash
+
+XDEBUG_CONFIG_FILE="/etc/php/7.0/mods-available/xdebug.ini"
+
+sudo sed -i 's/;*zend/;zend/g' $XDEBUG_CONFIG_FILE
 if [[ "$1" == "apache" ]]; then
-    sudo sed -i 's/;*zend/;zend/g' /etc/php5/apache2/conf.d/20-xdebug.ini
     sudo service apache2 restart
-else
-    sudo sed -i 's/;*zend/;zend/g' /etc/php5/cli/conf.d/20-xdebug.ini
 fi

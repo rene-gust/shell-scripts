@@ -1,0 +1,17 @@
+#!/bin/bash
+
+XDEBUG_CONFIG_FILE="/etc/php/7.0/mods-available/xdebug.ini"
+
+if [[ -z "$1" ]]
+then
+    echo "usage: xdebug on|off [apache]"
+else
+    if [[ "$1" == "on" ]]; then
+        sudo sed -i 's/;*zend/zend/g' $XDEBUG_CONFIG_FILE
+    else
+        sudo sed -i 's/;*zend/;zend/g' $XDEBUG_CONFIG_FILE
+    fi
+    if [[ "$2" == "apache" ]]; then
+        sudo service apache2 restart
+    fi
+fi
