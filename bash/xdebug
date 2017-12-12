@@ -11,7 +11,8 @@ else
     else
         sudo sed -i 's/;*zend/;zend/g' $XDEBUG_CONFIG_FILE
     fi
-    if [[ "$2" == "apache" ]]; then
-        sudo service apache2 restart
+    if [[ "$2" != "" ]]; then
+        sudo service $2 restart
+        echo $2 restarted
     fi
 fi
