@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ -z "$1" ]]
+then
+    echo "usage: xdebug_ide_server [php ide server name]"
+else
+    export PHP_IDE_CONFIG="serverName=$1"
+fi
