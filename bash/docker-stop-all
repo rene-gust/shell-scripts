@@ -1,0 +1,6 @@
+#!/bin/bash
+# script to kill all running docker container
+
+while IFS= read n; do
+    [[ "$n" =~ ([a-z0-9]+) ]] && docker stop ${BASH_REMATCH[1]}
+done < <(docker ps)
