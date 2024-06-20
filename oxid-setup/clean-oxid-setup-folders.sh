@@ -1,0 +1,1 @@
+chmod -R 777 source/export source/log source/out/pictures source/out/media source/tmp var source/Setup source/config.inc.php source/.htaccess
